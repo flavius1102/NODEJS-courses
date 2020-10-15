@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-8 mx-auto">
+          <h2 class="text-center mt-4 mb-4">Tanfolyamaink</h2>
+              <form action="/jelentkezes" method="POST">
+              <% for(let i=0; i <tanfolyamok.length; i++) {
+                    if (!tanfolyamok[i].kategoriatanfolyam.length) { continue; }
+                    %>
+                    <div class="card card-info my-2 mx-auto">
+                      <h4 class="my-2 text-center"><%= tanfolyamok[i].kategorianeve %></h4> 
+                      <% 
+                      for(let j=0; j < tanfolyamok[i].kategoriatanfolyam.length; j++) { %> 
+                        <h6 class="text-center my-2"><%= tanfolyamok[i].kategoriatanfolyam[j].tanfolyamneve %>
+                          <br>
+                          <button class="btn btn-info my-2" name="tanfolyamid" value="<%= tanfolyamok[i].kategoriatanfolyam[j]._id %>" type="submit">Jelentkezem</button></h6>
+
+                   <% } %>
+                  </div>  
+          <% } %>
+        </form>
+          
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+      <div class="card card-body">
+          <h1 class="text-center mb-3">Jelentkezés tanfolyamra</h1>
+          <%- include ./partials/messages %>
+          <form action="/mentes" method="POST">
+              <div class="form-group">
+                  <label for="kategorianeve"><b class="text-info">Kategória:</b> <%= tanfolyam.kategoriaid.kategorianeve %></label>
+                  <label for="tanfolyamneve"><b class="text-info">Tanfolyam:</b> <%= tanfolyam.tanfolyamneve %></label>
+
+                  <input
+                          type="hidden"
+                          id="tanfolyamid"
+                          name="tanfolyamid"
+                          value="<%= tanfolyam._id %>">
+
+                  <div class="form-group">
+                        <label for="nev">Név:</label>
+                        <input
+                                type="text"
+                                id="nev"
+                                name="nev"
+                                class="form-control"
+                                placeholder="Név"
+                                required>
+                </div>
+                <div class="form-group">
+                        <label for="email">Email-cím:</label>
+                        <input
+                                type="text"
+                                id="email"
+                                name="email"
+                                class="form-control"
+                                placeholder="Email"
+                                required>
+                </div>
+                <div class="form-group">
+                        <label for="szuletesido">Születési idő:</label>
+                        <input
+                                type="date"
+                                id="szuletesido"
+                                name="szuletesido"
+                                class="form-control"
+                                placeholder="Születési idő"
+                                required>
+                               
+                </div>
+                <div class="form-group">
+                        <label for="szuleteshely">Születési hely:</label>
+                        <input
+                                type="text"
+                                id="szuleteshely"
+                                name="szuleteshely"
+                                class="form-control"
+                                placeholder="Születési hely"
+                                required>
+                                
+                </div>
+              </div>
+              <button type="submit" class="btn btn-info btn-block">Jelentkezés</button>
+            </form>
+            <br>
+
+        </div>
+    </div>
+</div>

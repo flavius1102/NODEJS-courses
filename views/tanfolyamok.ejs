@@ -1,0 +1,72 @@
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+      <div class="card card-body">
+          <h1 class="text-center mb-3">Tanfolyam felvétele</h1>
+          <% include ./partials/messages %>
+          <form action="/admin/tanfolyamok" method="POST">
+              <div class="form-group">
+                  <label for="tanfolyamneve">Új tanfolyam neve</label>
+                  <input
+                          type="text"
+                          id="tanfolyamneve"
+                          name="tanfolyamneve"
+                          class="form-control"
+                          placeholder="Új tanfolyam neve"
+                          required
+                  />
+              </div>
+              <div class="form-group">
+                 <label for="kategoriaid">Kategória neve</label>
+                 <select
+                         type="text"
+                         id="kategoriaid"
+                         name="kategoriaid"
+                         class="form-control">
+                           <%  for(let i=0; i <kattanf.length; i++) {%>
+                         <option value="<%= kattanf[i]._id %>">
+                                <%= kattanf[i].kategorianeve %>
+                            <% } %>
+                         </option>
+            </select>
+             </div>
+              <button type="submit" class="btn btn-primary btn-block">Tanfolyam felvétele</button>
+            </form>
+            <br>
+            
+         <a href="/admin/kategoriak">Kategória felvétele</a>
+         <br>
+         <a href="/admin/dashboard">Vissza</a>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h2 class="text-center mb-3">Rögzített tanfolyamok</h2>
+            <%
+            // tanfolyamok vizsgálat
+            if (!kattanf.length) { %>
+                <p>Nincs rögzített tanfolyam.</p>
+            <% } else {%>
+                <ul>
+                <% for(let i=0; i < kattanf.length; i++) {
+                    if (kattanf[i].kategoriatanfolyam.length) {
+                        %><li><%
+                        for(let j=0; j < kattanf[i].kategoriatanfolyam.length; j++) { %>
+                            <!-- <p><%= i %> -->
+                            <%= kattanf[i].kategorianeve %>:
+                            <%= kattanf[i].kategoriatanfolyam[j].tanfolyamneve %></p> <%
+                        %></li><%
+                        }
+                    }
+                }
+                %></ul>
+          <% } %>
+            
+        </div>
+    </div>
+</div>
+
+
+

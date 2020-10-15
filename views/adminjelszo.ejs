@@ -1,0 +1,15 @@
+<div class="row mt-5">
+  <div class="col-md-6 mx-auto">
+    <div class="card card">
+      <h1 class="text-center mb-3"><i class="fas fa-unlock-alt"></i> Admin jelszó megadása</h1>
+      <% include ./partials/messages %>
+      <form action="/admin/jelszo" method="POST">
+          <div class="form-group">
+          <label for="jelszo">Admin jelszó:</label>
+          <input type="password" name="jelszo" id="jelszo" class="form-control mb-3" required />
+          <button type="submit" class="btn btn-primary btn-block">Jelszó beállítása</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

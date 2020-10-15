@@ -1,0 +1,34 @@
+<h1 class="mt-4">Admin oldal</h1>
+<p class="lead mb-3">Hello, Admin! </p>
+<a href="/admin/kategoriak" class="btn btn-primary">Kategória felvétele</a>
+<a href="/admin/tanfolyamok" class="btn btn-danger">Tanfolyam felvétele</a>
+<a href="/admin/logout" class="btn btn-secondary">Kijelentkezés</a>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <p class="display-4 mt-4">Jelentkezők tanfolyamra</p>
+      <%
+      let elozokategoria = "";
+      let elozotanfolyam = "";
+      for (let i=0; i < jelentkezesek.length; i++) {
+
+        <!-- Születési idő dátum objektummá alakítása -->
+        let fszuletesido = new Date(jelentkezesek[i].szuletesido);
+
+        if (jelentkezesek[i].kategorianeve != elozokategoria) { %>
+         <p class="text-primary"> <b><%= jelentkezesek[i].kategorianeve %>:</b></p>
+         <% elozokategoria = jelentkezesek[i].kategorianeve;
+        }
+        if (jelentkezesek[i].tanfolyamneve != elozotanfolyam) { %>
+          <p class="mx-2"><b><%= jelentkezesek[i].tanfolyamneve %>:</b></p>
+          <% elozotanfolyam = jelentkezesek[i].tanfolyamneve;
+        } %>
+       <p class="mx-4"><%= jelentkezesek[i].nev %>, 
+       <%= jelentkezesek[i].email %>,
+       <%= jelentkezesek[i].szuleteshely %>,
+       <%= fszuletesido.toISOString().slice(0,10).replace(/-/g,"."); %></p>
+      <%} %> 
+    </div>
+  </div>
+</div>

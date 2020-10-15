@@ -1,0 +1,41 @@
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+      <div class="card card-body">
+          <h1 class="text-center mb-3">Kategória felvétele</h1>
+          <%- include ./partials/messages %>
+          <form action="/admin/kategoriak" method="POST">
+              <div class="form-group">
+                  <label for="kategorianeve">Új kategória neve</label>
+                  <input
+                          type="text"
+                          id="kategorianeve"
+                          name="kategorianeve"
+                          class="form-control"
+                          placeholder="Új kategória neve"
+                          required
+                  />
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Kategória felvétele</button>
+            </form>
+            <br>
+            <a href="/admin/tanfolyamok">Tanfolyam felvétele</a>
+            <br>
+            <a href="/admin/dashboard">Vissza</a>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h2 class="text-center mb-3">Rögzített kategóriák</h2>
+      <% if (kategoriak.length) {
+          for(let i=0; i <kategoriak.length; i++) {%>
+                  <%= kategoriak[i].kategorianeve %><br>
+             <%}
+         } else { %>
+        <p>Nincsenek még kategóriák</p>
+      <% } %>
+    </div>
+  </div>
+</div>
